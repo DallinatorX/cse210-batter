@@ -1,3 +1,6 @@
+import os
+os.environ['RAYLIB_BIN_PATH'] = "."
+
 import random
 from game import constants
 from game.director import Director
@@ -8,10 +11,11 @@ from game.input_service import InputService
 from game.output_service import OutputService
 from game.physics_service import PhysicsService
 from game.audio_service import AudioService
+from game.brick import Brick
+from game.ball import Ball
+
 
 # TODO: Add imports similar to the following when you create these classes
-# from game.brick import Brick
-# from game.ball import Ball
 # from game.paddle import Paddle
 # from game.control_actors_action import ControlActorsAction
 # from game.handle_collisions_action import HandleCollisionsAction
@@ -23,12 +27,20 @@ def main():
     # create the cast {key: tag, value: list}
     cast = {}
 
-    cast["bricks"] = []
+
+    bricks = [] 
+    for n in range(constants.BRICK_COUNT_COLLUMS):
+        for m in range(constants.BRICK_COUNT_ROWS):
+            brick = Brick()
+            brick.set_position(Point(((n+1) * (constants.MAX_X / (constants.BRICK_COUNT_COLLUMS + 1)))-constants.BALL_WIDTH, m * ((constants.MAX_Y / 1.5) / (constants.BRICK_COUNT_ROWS + 1))))
+            bricks.append(brick)
+    cast["bricks"] = bricks
+
     # TODO: Create bricks here and add them to the list
+    ball = Ball()
 
-    cast["balls"] = []
+    cast["balls"] = [ball]
     # TODO: Create a ball here and add it to the list
-
     cast["paddle"] = []
     # TODO: Create a paddle here and add it to the list
 
@@ -42,6 +54,8 @@ def main():
     audio_service = AudioService()
 
     draw_actors_action = DrawActorsAction(output_service)
+
+
 
     # TODO: Create additional actions here and add them to the script
 
