@@ -29,6 +29,9 @@ class Actor:
         self._width = 0
         self._height = 0
         self._image = ""
+        self._bounce_on_edge = False
+        self._player_controlled = False
+        self._type = ""
 
     def get_width(self):
         return self._width
@@ -70,7 +73,13 @@ class Actor:
             Point: The actor's position in 2d space.
         """
         return self._position
-    
+
+    def get_position_x(self):
+        return self._position.get_x()
+
+    def get_position_y(self):
+        return self._position.get_y()
+
     def get_text(self):
         """Gets the actor's textual representation.
         
@@ -95,6 +104,12 @@ class Actor:
             Point: The actor's speed and direction.
         """
         return self._velocity
+
+    def get_velocity_x(self):
+        return self._velocity.get_x()
+
+    def get_velocity_y(self):
+        return self._velocity.get_y()
     
     def set_position(self, position):
         """Updates the actor's position to the given one.
@@ -129,3 +144,20 @@ class Actor:
     def has_image(self):
         return self._image != ""
 
+    def set_bounce_on_edge(self,bounce):
+        self._bounce_on_edge = bounce
+
+    def get_bounce_on_edge(self):
+        return self._bounce_on_edge
+
+    def is_player_controlled(self):
+        return self._player_controlled
+
+    def set_player_controlled(self, controlled):
+        self._player_controlled = controlled
+
+    def set_type(self, kind):
+        self._type = kind
+
+    def get_type(self):
+        return self._type

@@ -11,3 +11,4 @@ class Brick(Actor):
         self.set_width(constants.BRICK_WIDTH)
         self.set_height(constants.BRICK_HEIGHT)
         self.set_image(constants.IMAGE_BRICK)
+        self.set_type("brick")
