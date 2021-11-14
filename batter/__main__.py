@@ -1,4 +1,5 @@
 import os
+
 os.environ['RAYLIB_BIN_PATH'] = "."
 
 import random
@@ -18,23 +19,29 @@ from game.handle_off_screen_action import Handle_Off_Screen_Action
 from game.paddle import Paddle
 from game.control_actors_action import Control_Actors_Action
 from game.handle_collisions_action import Handle_Collisions_Action
+from game.pause_menu_actor import Pause_Menu_Actor
 
-# TODO: Add imports similar to the following when you create these classes
-# from game.handle_collisions_action import HandleCollisionsAction
-# from game.move_actors_action import MoveActorsAction
+
+
+
 
 def main():
-
     # create the cast {key: tag, value: list}
     cast = {}
+
+
 
 
     bricks = [] 
     for n in range(constants.BRICK_COUNT_COLLUMS):
         for m in range(constants.BRICK_COUNT_ROWS):
             brick = Brick()
-            brick.set_position(Point(((n+1) * (constants.MAX_X / (constants.BRICK_COUNT_COLLUMS + 1)))-constants.BALL_WIDTH, m * ((constants.MAX_Y / 1.5) / (constants.BRICK_COUNT_ROWS + 1))))
-            bricks.append(brick)
+            brick.set_position(Point(((n+1) * (constants.MAX_X / 
+                              (constants.BRICK_COUNT_COLLUMS + 1))
+                              )-constants.BALL_WIDTH, m * ((constants.MAX_Y / 1.5) 
+                              / (constants.BRICK_COUNT_ROWS + 1)) + 
+                              constants.BALL_WIDTH))
+            bricks.append(brick) 
     cast["bricks"] = bricks
 
     # TODO: Create bricks here and add them to the list
@@ -45,6 +52,8 @@ def main():
     paddle = Paddle()
     cast["paddle"] = [paddle]
     # TODO: Create a paddle here and add it to the list
+    pause_menu = Pause_Menu_Actor()
+    cast["pause_menu"] = [pause_menu]
 
 
     # Create the script {key: tag, value: list}
@@ -55,6 +64,7 @@ def main():
     physics_service = PhysicsService()
     audio_service = AudioService()
 
+
     draw_actors_action = DrawActorsAction(output_service)
 
 
@@ -62,7 +72,9 @@ def main():
     # TODO: Create additional actions here and add them to the script
 
     script["input"] = [Control_Actors_Action()]
-    script["update"] = [Move_Actors_Action(),Handle_Off_Screen_Action(),Handle_Collisions_Action(physics_service,audio_service)]
+    script["update"] = [Move_Actors_Action(),
+                        Handle_Off_Screen_Action(),
+                        Handle_Collisions_Action(physics_service,audio_service)]
     script["output"] = [draw_actors_action]
 
 

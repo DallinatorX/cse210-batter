@@ -1,6 +1,6 @@
+from random import randint
 from game.actor import Actor
 from game import constants
-
 
 class Brick(Actor):
     """
@@ -10,5 +10,5 @@ class Brick(Actor):
         super().__init__()
         self.set_width(constants.BRICK_WIDTH)
         self.set_height(constants.BRICK_HEIGHT)
-        self.set_image(constants.IMAGE_BRICK)
+        self.set_image(constants.IMAGE_BRICK[randint(0,6)])
         self.set_type("brick")

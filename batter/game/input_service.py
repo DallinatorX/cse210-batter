@@ -60,3 +60,16 @@ class InputService:
 
     def window_should_close(self):
         return raylibpy.window_should_close()
+
+    def get_key_press(self):
+        """
+        we probably need to filter the keys to be only regular letters
+        """
+        key_int = raylibpy.get_key_pressed()
+
+        key_string = None
+
+        if key_int != -1:
+            key_string = chr(key_int)
+        
+        return key_string

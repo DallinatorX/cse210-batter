@@ -1,4 +1,5 @@
 import os
+import random
 
 MAX_X = 800
 MAX_Y = 600
@@ -8,7 +9,16 @@ DEFAULT_SQUARE_SIZE = 20
 DEFAULT_FONT_SIZE = 20
 DEFAULT_TEXT_OFFSET = 4
 
-IMAGE_BRICK = os.path.join(os.getcwd(), "./batter/assets/brick-3.png")
+IMAGE_BRICK0 = os.path.join(os.getcwd(), "./batter/assets/brick-0.png")
+IMAGE_BRICK1 = os.path.join(os.getcwd(), "./batter/assets/brick-1.png")
+IMAGE_BRICK2 = os.path.join(os.getcwd(), "./batter/assets/brick-2.png")
+IMAGE_BRICK3 = os.path.join(os.getcwd(), "./batter/assets/brick-3.png")
+IMAGE_BRICK4 = os.path.join(os.getcwd(), "./batter/assets/brick-4.png")
+IMAGE_BRICK5 = os.path.join(os.getcwd(), "./batter/assets/brick-5.png")
+IMAGE_BRICK6 = os.path.join(os.getcwd(), "./batter/assets/brick-6.png")
+IMAGE_BRICK = [IMAGE_BRICK0,IMAGE_BRICK1,IMAGE_BRICK2,IMAGE_BRICK3,IMAGE_BRICK4,IMAGE_BRICK5,IMAGE_BRICK6]
+
+
 IMAGE_PADDLE = os.path.join(os.getcwd(), "./batter/assets/bat.png")
 IMAGE_BALL = os.path.join(os.getcwd(), "./batter/assets/ball.png")
 
@@ -38,6 +48,6 @@ PADDLE_HEIGHT = 24
 BALL_WIDTH = 24
 BALL_HEIGHT = 24
 
-BRICK_COUNT_COLLUMS = 5
-BRICK_COUNT_ROWS = 5
+BRICK_COUNT_COLLUMS = 10
+BRICK_COUNT_ROWS = 10
 
