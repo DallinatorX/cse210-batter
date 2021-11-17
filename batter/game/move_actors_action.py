@@ -1,9 +1,16 @@
 from game.action import Action
 from game.point import Point
-#from game import constants
 
 class Move_Actors_Action(Action):
+    """
+    This moves the actor
+    """
+    
     def execute(self, cast):
+        """
+        It takes the cast and adds the veloicty to the position 
+        in oder to move the actor
+        """
         pause_menu = cast["pause_menu"][0]
         if(pause_menu.is_paused()):
             pass

@@ -3,7 +3,15 @@ from game.point import Point
 from game import constants
 
 class Handle_Off_Screen_Action(Action):
+    """
+    This class recives the cast and if any member is set to bonce on edage
+    then it changes its veloicty
+    """
+
     def execute(self, cast):
+        """
+        Makes objects bounce on the edge
+        """
         for group in cast.values():
             for actor in group:
                 if actor.get_bounce_on_edge():
